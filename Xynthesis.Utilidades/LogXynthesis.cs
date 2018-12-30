@@ -25,5 +25,20 @@ namespace Xynthesis.Utilidades
                 sw.WriteLine("=================================================================================================");
             }
         }
+
+        public void EscribaLog(string modulo, string log)
+        {
+            string path = ConfigurationManager.AppSettings["LogInformacion"];
+
+            using (StreamWriter sw = File.AppendText(path + "LOG_" + modulo.ToUpper() + "_" + System.DateTime.Now.ToString("dd-MM-yyyy") + ".txt"))
+            {
+                sw.WriteLine("");
+                sw.WriteLine("Se ha generado el siguiente LOG : \n" + log);
+                sw.WriteLine("\n");
+                sw.WriteLine("Registrado el : " + System.DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss"));
+                sw.WriteLine("");
+                sw.WriteLine("=================================================================================================");
+            }
+        }
     }
 }
